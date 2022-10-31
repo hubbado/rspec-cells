@@ -1,23 +1,39 @@
 name: CI
+
 on:
-  - push
-  - pull_request
+  pull_request:
+    branches:
+      - master
+    paths-ignore:
+      - 'README.md'
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - 'README.md'
+
 jobs:
   test:
-    name: Test (Ruby ${{ matrix.ruby }})
+    name: Test (Ruby ${{ matrix.ruby }} with ${{ matrix.gemfile }})
     strategy:
+      fail-fast: false
       matrix:
         ruby:
-          - '2.3'
-          - '2.4'
           - '2.5'
           - '2.6'
           - '2.7'
           - '3.0'
+          - '3.1'
           - 'head'
+        gemfile:
+          - gemfiles/rspec_rails_4_0.gemfile
+          - gemfiles/rspec_rails_5_0.gemfile
+          - gemfiles/rspec_rails_6_0.gemfile
+    env:
+      BUNDLE_GEMFILE: "${{ matrix.gemfile }}"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}

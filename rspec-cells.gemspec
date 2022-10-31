@@ -31,4 +31,5 @@ Gem::Specification.new do |s|
 
 
   s.add_development_dependency "capybara" # FIXME: please make test for Capybara run.
+  s.add_development_dependency "appraisal", "~> 2.0"
 end
