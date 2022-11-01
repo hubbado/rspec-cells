@@ -1,3 +1,7 @@
+# 0.3.8
+
+* Allow rspec-rails 6.0
+
 # 0.3.7
 
 * Fix method signature for ruby <= 2.6
