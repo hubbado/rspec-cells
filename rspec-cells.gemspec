@@ -21,9 +21,11 @@ Gem::Specification.new do |s|
     "wiki_uri"          => "https://github.com/trailblazer/rspec-cells/wiki",
   }
 
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  s.files = Dir.chdir(__dir__) do
+    `git ls-files -z`.split("\x0").reject do |file|
+      file.start_with?(*%w[.git Appraisals Gemfile Rakefile gemfiles spec])
+    end
+  end
   s.require_paths = ["lib"]
 
   s.add_runtime_dependency 'rspec-rails', ">= 3.0.0", "< 6.1.0"
