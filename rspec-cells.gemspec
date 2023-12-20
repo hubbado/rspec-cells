@@ -28,7 +28,7 @@ Gem::Specification.new do |s|
   end
   s.require_paths = ["lib"]
 
-  s.add_runtime_dependency 'rspec-rails', ">= 3.0.0", "< 6.1.0"
+  s.add_runtime_dependency 'rspec-rails', ">= 3.0.0", "< 6.2.0"
   s.add_runtime_dependency "cells",       ">= 4.0.0", "< 6.0.0"
 
 
