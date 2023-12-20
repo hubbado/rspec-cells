@@ -1,3 +1,7 @@
+# 0.3.9
+
+* Allow rspec-rails >= 6.2.0.
+
 # 0.3.8
 
 * Allow rspec-rails 6.0
